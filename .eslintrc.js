@@ -23,15 +23,14 @@ module.exports = {
   },
   extends: [
     'plugin:import/errors',
-    'prettier',
     'plugin:eslint-comments/recommended',
+    'plugin:prettier/recommended',
   ],
   overrides: [
     {
       extends: [
         'plugin:@typescript-eslint/eslint-recommended',
         'plugin:import/typescript',
-        'prettier/@typescript-eslint',
       ],
       files: ['*.ts', '*.tsx'],
       plugins: ['@typescript-eslint/eslint-plugin', 'local'],
@@ -78,7 +77,7 @@ module.exports = {
         'packages/jest-jasmine2/src/jasmine/Suite.ts',
         'packages/jest-jasmine2/src/jasmine/jasmineLight.ts',
         'packages/jest-jasmine2/src/jestExpect.ts',
-        'packages/jest-resolve/src/index.ts',
+        'packages/jest-resolve/src/resolver.ts',
       ],
       rules: {
         'local/prefer-spread-eventually': 'warn',
@@ -150,6 +149,14 @@ module.exports = {
         'no-undef': 'off',
         'no-unused-vars': 'off',
         'prettier/prettier': 'off',
+        'sort-keys': 'off',
+      },
+    },
+    {
+      files: ['website/**/*'],
+      rules: {
+        'import/order': 'off',
+        'import/sort-keys': 'off',
         'sort-keys': 'off',
       },
     },
@@ -258,7 +265,7 @@ module.exports = {
   parserOptions: {
     sourceType: 'module',
   },
-  plugins: ['markdown', 'import', 'jest', 'prettier'],
+  plugins: ['markdown', 'import', 'jest'],
   rules: {
     'accessor-pairs': ['warn', {setWithoutGet: true}],
     'block-scoped-var': 'off',
@@ -442,7 +449,6 @@ module.exports = {
     'prefer-arrow-callback': ['error', {allowNamedFunctions: true}],
     'prefer-const': 'error',
     'prefer-template': 'off',
-    'prettier/prettier': 'error',
     quotes: [
       'error',
       'single',
